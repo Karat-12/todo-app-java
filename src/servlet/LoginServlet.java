@@ -43,11 +43,30 @@ public class LoginServlet extends HttpServlet {
             } else {
 
                 PrintWriter out = res.getWriter();
-                out.println("<h2>Invalid Credentials ❌</h2>");
-                out.println("<a href='login.html'>Try Again</a>");
-            }
 
-        } catch (Exception e) {
+            out.println("<html><body style='font-family:Segoe UI;background:#f4f6f8;'>");
+
+            out.println("<div style='width:350px;margin:100px auto;padding:25px;background:white;border-radius:10px;box-shadow:0 0 10px rgba(0,0,0,0.1);text-align:center;'>");
+
+            out.println("<h3>User not found</h3>");
+            out.println("<p>This looks like a new user.</p>");
+            out.println("<p>Would you like to create an account?</p>");
+
+            out.println("<form action='register' method='post'>");
+
+            out.println("<input type='hidden' name='username' value='" + username + "'>");
+            out.println("<input type='hidden' name='password' value='" + password + "'>");
+
+            out.println("<button style='padding:10px 20px;background:#4361EE;color:white;border:none;border-radius:5px;'>Create Account</button>");
+
+            out.println("</form>");
+
+            out.println("<br><a href='login.html' style='text-decoration:none;color:#555;'>Go Back</a>");
+
+            out.println("</div></body></html>");
+
+            }
+        }catch (Exception e) {
             e.printStackTrace();
         }
     }
